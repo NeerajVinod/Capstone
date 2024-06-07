@@ -17,3 +17,14 @@
     z-index: 1000;
     animation: slideIn 0.5s ease-out;
 }
+.ocontainer {
+    background-image: url('https://images5.alphacoders.com/400/400312.jpg'); /* Replace with your image link */
+    background-size: 100% auto;
+    width: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Adjust the height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

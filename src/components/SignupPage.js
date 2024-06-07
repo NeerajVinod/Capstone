@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import SimpleHeader from './SimpleHeader';
 import Footer from './Footer';
 import NavComponent from './nav';
+import './login.css';
+
 
 
 const SignupPage = () => {
@@ -50,7 +51,7 @@ const SignupPage = () => {
                 body: JSON.stringify(formData)
             });
             if (response.ok) {
-                window.location.href = './';
+                window.location.href = './home';
             } else {
                 console.error('signup failed');
             }
@@ -73,7 +74,7 @@ const SignupPage = () => {
         <div>
 
             <NavComponent></NavComponent>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            <div className='ocontainer' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
                 <div className='container' style={{ marginTop: '-160px', width: '500px' }}>
                     <div className='row'>
                         <div className='card'>
@@ -111,7 +112,7 @@ const SignupPage = () => {
 
                                 </form>
                                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-                                    <button className='btn btn-success' onClick={handleSubmit}>Sign Up</button>
+                                    <button className='btn btn-success' style={{ backgroundColor: '#000000', border: 'none' }} onClick={handleSubmit}>Sign Up</button>
                                 </div>
                             </div>
                         </div>

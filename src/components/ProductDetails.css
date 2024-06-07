@@ -1,0 +1,50 @@
+.container-details {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.additional-details {
+  margin-bottom: 10px;
+}
+
+.brand, .warranty, .price {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.brand-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.font-normal {
+  font-style: italic;
+}
+
+.description {
+  margin-top: 10px;
+  color: #777;
+}
+
+.add-to-cart-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #0056b3;
+}

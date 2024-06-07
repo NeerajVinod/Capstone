@@ -10,14 +10,14 @@ function nav() {
     return (
         <Navbar style={{ backgroundColor: 'black' }} expand="lg" >
             <Container fluid>
-                <Navbar.Brand style={{ color: 'red', fontSize: '30px' }} href="#">MINUTE TEC</Navbar.Brand>
+                <Navbar.Brand style={{ color: 'red', fontSize: '40px' }} href="#">MINUTE TEC</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
                         className="me-auto my-2 my-lg-0"
                         style={{ maxHeight: '100px' }}
                         navbarScroll >
-                        <Nav.Link style={{ color: 'white', marginLeft:'600px'}} href="/">Login</Nav.Link>
+                        <Nav.Link style={{ color: 'white', marginLeft:'500px'}} href="/">Login</Nav.Link>
                         <Nav.Link style={{ color: 'white' }} href="/register">Signup</Nav.Link>
                         <Nav.Link style={{ color: 'white' }} href="/home">Home </Nav.Link>
 

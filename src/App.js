@@ -6,6 +6,7 @@ import SignupPage from './components/SignupPage';
 import 'bootstrap/dist/css/bootstrap.css';
 //import Nav from './components/nav'
 import Home from './components/Home';
+import ProductDetails from './components/ProductDetails';
 //import ProductDetails from './components/ProductDetails';
 
 
@@ -18,7 +19,7 @@ function App() {
                     <Route path="/" element={<Login />} />
                     <Route path="/register" element={<SignupPage />} />
                     <Route path="/home" element={<Home />} />
-
+                    <Route path="/:id" element={<ProductDetails/> } />
 
 
                 </Routes>

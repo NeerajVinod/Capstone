@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LoginHeader from './LoginHeader';
+import NavComponent from './nav';
 import Footer from './Footer';
 // import { validCredential } from '../Service/EmployeeService'
 import { useNavigate } from 'react-router-dom';
@@ -40,7 +40,7 @@ const Login = () => {
                 setTimeout(() => {
                     setShowAlert(false);
                     // Redirect to dashboard or another page
-                    navigate('/register');
+                    navigate('/home');
                 }, 3000);
             } else {
                 // Handle failed login
@@ -58,7 +58,7 @@ const Login = () => {
 
     return (
         <div>
-            <LoginHeader />
+            <NavComponent />
             {showAlert && (
                 <div className="alert-container">
                     <Alert severity="success">
@@ -74,7 +74,7 @@ const Login = () => {
                     </Alert>
                 </div>
             )}
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            <div className='ocontainer' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
                 <div className='container' style={{ marginTop: '-160px', width: '500px' }}>
                     <div className='row'>
                         <div className='card'>
@@ -105,7 +105,7 @@ const Login = () => {
                                         </input>
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-                                        <button className='btn btn-success' type='submit'>Login</button>
+                                        <button className='btn btn-success' style={{ backgroundColor: '#000000', border: 'none' }} type='submit'>Login</button>
                                     </div>
                                 </form>
                             </div>
