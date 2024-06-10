@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-//import ProductDetails from './ProductDetails';
+import ProductDetails from './ProductDetails';
 
 import axios from 'axios';
 
@@ -11,9 +11,11 @@ function Cards() {
     const [cardsData, setCardsData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8099/api/products')
-            .then(response => response.json())
+        fetch('http://localhost:8099/api/show-product')
+            .then(response => response.text())
+            .then(text => text.length ? JSON.parse(text) : {})
             .then(data => {
+                console.log(data);
                 setCardsData(data);
             })
             .catch(error => {
@@ -36,7 +38,7 @@ function Cards() {
                 <div key={card.id}>
                     <Link to={`/${card.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
 
-                        <Card style={{ flex: '0 0 calc(25% - 10px)', margin: '30px', width: '20rem' }}>
+                        <Card style={{ flex: '0 0 calc(25% - 10px)', margin: '50px', width: '10rem' }}>
                             <Card.Img variant="top" src={card.imageurl} style={{ height: '200px', objectFit: 'cover' }} />
                             <Card.Body>
                                 <Card.Title>{card.name}</Card.Title>

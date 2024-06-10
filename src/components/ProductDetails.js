@@ -7,6 +7,7 @@ import 'react-rater/lib/react-rater.css';
 //import ProductPage from './ProductPage';
 import './ProductDetails.css'; 
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ProductDetails = () => {
   //const {images, title, reviews, availability, brand, category, sku, price, previousPrice, description, size, color } = product;
@@ -15,7 +16,9 @@ const ProductDetails = () => {
   const { id } = useParams();
 
     const [product, setProduct] = useState([]);
-  const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
+    const [quantity, setQuantity] = useState(1);
+    const [addedToCart, setAddedToCart] = useState(false);
   console.log('id :',id);
   console.log(typeof id);
 
@@ -38,7 +41,14 @@ const ProductDetails = () => {
       });
   }, []);
 
-  console.log('Data:',product.name);
+    console.log('Data:', product.name);
+
+    const addToCart = () => {
+        if (!addedToCart) {
+            alert('Item added to cart');
+            setAddedToCart(true);
+        }
+    };
 
   if (loading) {
     return <div>Loading...</div>; 
@@ -46,7 +56,17 @@ const ProductDetails = () => {
 
   if (!product) {
     return <div>No product found</div>; 
-  }
+    }
+
+    const decrement = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
+
+    const increment = () => {
+        setQuantity(quantity + 1);
+    };
 
   const plusMinuceButton =
     'flex h-8 w-8 cursor-pointer items-center justify-center border duration-100 hover:bg-neutral-100 focus:ring-2 focus:ring-gray-500 active:ring-2 active:ring-gray-500';
@@ -54,7 +74,7 @@ const ProductDetails = () => {
   return (
     <section className="container-section">
       <div className="container-image">
-        <img src={product.imageurl} alt={product.name}  />
+              <img src={product.imageurl} alt={product.name} style={{ width: '30%', height: '30%' }}  />
       </div>
 
       <div className="container-details">
@@ -81,24 +101,25 @@ const ProductDetails = () => {
            
           </div>
         
-        <div className="quantity">
-          <p className="pb-2 text-xs text-gray-500">Quantity</p>
-          <div className="flex">
-            <button className={`${plusMinuceButton}`}>?</button>
-            <div className="flex">1</div>
-            <button className={`${plusMinuceButton}`}>+</button>
+          <div className="quantity">
+              <p>Qty </p>
+              <button className="plusMinuceButton" onClick={decrement}> - </button>
+              {quantity}
+              <button className="plusMinuceButton" onClick={increment}> + </button>
           </div>
-        </div>
-        <div className="buttonbox">
-          <button className="cart">
-            <BiShoppingBag className="mx-2" />
-            Add to Cart
-          </button>
-          <button className="wishlist">
-            <AiOutlineHeart className="mx-2" />
-            Wishlist
-          </button>
-        </div>
+
+          <div className="buttonbox">
+              <Link to={`/${id}/cart`} onClick={addToCart} className="cart">
+                  <BiShoppingBag className="mx-2" />
+                  {addedToCart ? "Go to Cart" : "Add to Cart"}
+              </Link>
+              <button className="wishlist">
+                  <AiOutlineHeart className="mx-2" />
+                  Wishlist
+              </button>
+          </div>
+       
+        
       
     </section>
   );
