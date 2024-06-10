@@ -1,7 +1,10 @@
 package com.example.E.commerce.application.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Set;
 
 @Entity
 @Data
@@ -24,6 +27,9 @@ public class User {
     private String username;
     @Column(name = "email")
     private String email;
-}
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private Set<Cart> carts;
+}
 

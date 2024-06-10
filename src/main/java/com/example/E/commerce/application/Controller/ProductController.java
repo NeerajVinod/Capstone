@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -32,9 +32,15 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
-    @GetMapping("/products")
+    @GetMapping("/show-product")
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> product = (List<Product>) productRepository.findAll();
+        Iterator<Product> itr= product.iterator();
+        while (itr.hasNext()){
+ //           System.out.println("1"+ itr.next().getCarts() );
+            System.out.println("2" + itr.next().getProductPrice());
+            System.out.println("3" + itr.next().getDescription());
+        }
         return ResponseEntity.ok(product);
     }
 

@@ -1,10 +1,17 @@
 package com.example.E.commerce.application.Entity;
 import com.example.E.commerce.application.Entity.User;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType. AUTO)
@@ -13,12 +20,12 @@ public class Cart {
     @ManyToOne
     @JoinColumn (name = "user_id", referencedColumnName = "id")
     private User user;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType. EAGER)
+    @ManyToMany
     @JoinTable(name = "product_cart",
             joinColumns = @JoinColumn (name = "cart_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn (name
                     = "product_id", referencedColumnName = "id"))
-    private List<Product> products;
+    private Set<Product> products;
 
     public long getId() {
         return id;
@@ -36,11 +43,11 @@ public class Cart {
         this.user = user;
     }
 
-    public List<Product> getProducts() {
+    public Set<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(Set<Product> products) {
         this.products = products;
     }
 }

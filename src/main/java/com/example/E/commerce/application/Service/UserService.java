@@ -7,5 +7,5 @@ import org.springframework.http.ResponseEntity;
 public interface UserService {
 
     ResponseEntity<User> addUser(User user);
-    ResponseEntity<LoginDTO> authenticateUser(LoginDTO user);
+    ResponseEntity<Object> authenticateUser(LoginDTO user);
 }

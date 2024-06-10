@@ -17,11 +17,12 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<User> RegisterUser(@RequestBody User user){
+
         return userService.addUser(user);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginDTO> LoginUser(@RequestBody LoginDTO user){
+    public ResponseEntity<Object> LoginUser(@RequestBody LoginDTO user){
         return userService.authenticateUser(user);
     }
 

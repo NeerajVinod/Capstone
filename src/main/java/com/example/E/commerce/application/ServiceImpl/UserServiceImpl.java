@@ -27,16 +27,16 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
     @Override
-    public ResponseEntity<LoginDTO> authenticateUser(LoginDTO user) {
+    public ResponseEntity<Object> authenticateUser(LoginDTO user) {
         Optional<User> dbUser = userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 
         if(dbUser.isPresent()){
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+            return ResponseEntity.ok(user);
         }
         else{
-            System.out.println("No user found:"+dbUser);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
         }
     }
 

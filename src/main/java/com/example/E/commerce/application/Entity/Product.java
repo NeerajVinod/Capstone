@@ -2,12 +2,16 @@ package com.example.E.commerce.application.Entity;
 
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +25,11 @@ public class Product {
 
     private String warranty;
 
+    private int qty;
 
-
+    @ManyToMany(mappedBy = "products")
+    @JsonIgnore
+    private Set<Cart> carts;
 
 
 
@@ -97,4 +104,29 @@ public class Product {
     public void setWarranty(String warranty) {
         this.warranty = warranty;
     }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    public Set<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(Set<Cart> carts) {
+        this.carts = carts;
+    }
 }
+
+
+
+
+
+
+
+
+
