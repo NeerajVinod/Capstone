@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> dbUser = userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 
         if(dbUser.isPresent()){
-            return ResponseEntity.ok(user);
+            return ResponseEntity.ok(dbUser);
         }
         else{
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");

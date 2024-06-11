@@ -15,7 +15,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/buy")
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CartController {
     @Autowired
     private CartRepository cartRepository;
