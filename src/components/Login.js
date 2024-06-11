@@ -21,8 +21,8 @@ const Login = () => {
         const formData = {
             username: username,
             password: password
-           
-            
+
+
         };
 
         // Example: Validate credentials with backend API
@@ -39,7 +39,8 @@ const Login = () => {
                 console.log("rs", response);
                 const userData = await response.json();
                 console.log("User Data", userData);
-                const userId = userData.userId;
+                const userId = userData.id;
+                localStorage.setItem('userId', userId);
 
                 // Handle successful login
                 setSuccess(true);
@@ -126,3 +127,4 @@ const Login = () => {
 }
 
 export default Login;
+
